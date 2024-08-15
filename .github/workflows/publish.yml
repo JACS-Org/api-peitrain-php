@@ -12,9 +12,12 @@ jobs:
     steps:
       - name: git-checkout
         uses: actions/checkout@v3
+      - name: Directory Permissions
+        run: chmod -R 777 storage bootstrap/cache
       - name: Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.0.0
         with:
             server: ${{ secrets.HS_SITE_SERVER}}
             username: ${{ secrets.HS_SITE_USER}}
             password: ${{ secrets.HS_SITE_PASS}}
+            server_dir: "public_html/"
