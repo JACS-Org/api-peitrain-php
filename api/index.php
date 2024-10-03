@@ -1,6 +1,7 @@
 <?php
-require  "../core/inc/bootstrap.php";
-require  "./instituciones_api.php";
+require "../core/inc/bootstrap.php";
+require "./instituciones_api.php";
+require "./categorias_api.php";
 
 $response = new ResponseApi();
 
@@ -11,7 +12,10 @@ if(isset($query['action'])){
     $action = $query['action'];
     if($action=="instituciones"){
         $api = new InstitucionApi();
-        $response->data = $api->getInfo();
+        $response->data = $api->index();
+    }else if($action=="categorias"){
+        $api = new CategoriaApi();
+        $response->data = $api->index();
     }else{
         $response = errorApi(404,"Action no encontrado"); 
     }

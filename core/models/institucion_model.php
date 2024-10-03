@@ -1,7 +1,10 @@
 <?php
-require_once PROJECT_ROOT_PATH . "/core/database/conexion.php";
+
 class InstitucionModel extends Database
 {
+    public function __construct(){
+        parent::__construct();
+    }
     public function getInstituciones(int $limit)
     {
         return $this->select("SELECT * FROM institucion ORDER BY id ASC LIMIT ?", ["i",[$limit]]);

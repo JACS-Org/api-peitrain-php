@@ -16,7 +16,7 @@ class Database
             throw new Exception($e->getMessage());   
         }			
     }
-    public function select($query = "" , $params = [])
+    protected function select($query = "" , $params = []): array
     {
        
         try {
@@ -34,11 +34,10 @@ class Database
         } catch(Exception $e) {
             throw New Exception( $e->getMessage() );
         }
-        return false;
     }
    
 
-    public function register($query = "" , $params = [])
+    protected function register($query = "" , $params = [])
     {
        $result = 0; 
         try {

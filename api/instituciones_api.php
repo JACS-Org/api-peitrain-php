@@ -1,17 +1,14 @@
 <?php
-require "../core/controllers/institucion_controller.php";
-
-
 
 class InstitucionApi extends BaseAPI{
-    protected $instituciones;
+    protected $institucionController;
 
     public function __construct() {
         parent::__construct();
-        $this->instituciones  = new InstitucionController();
+        $this->institucionController  = new InstitucionController();
     }
 
-    public function getInfo() {
+    public function index() {
         
         if ($this->method == 'GET') {
             return $this->getAllInstituciones();
@@ -22,7 +19,7 @@ class InstitucionApi extends BaseAPI{
 
     function getAllInstituciones(){
    
-        $data = $this->instituciones->getInstituciones(10);
+        $data = $this->institucionController->getInstituciones(10);
         return $data;
     }
 
@@ -33,7 +30,7 @@ class InstitucionApi extends BaseAPI{
         $mision = $this->inputs['mision'];
         $vision = $this->inputs['vision'];
 
-        return $this->instituciones->registrarInstitucion($titulo,$resumen,$mision,$vision);
+        return $this->institucionController->registrarInstitucion($titulo,$resumen,$mision,$vision);
     }
 }
 

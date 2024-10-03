@@ -1,13 +1,14 @@
 <?php
 
 class InstitucionController extends BaseController {
-    
+    protected $institucionModel;
+
     public function __construct() {
-        $this->institucion = new InstitucionModel();
+        $this->institucionModel = new InstitucionModel();
     }
 
     public function getInstituciones(int $limit){
-        return $this->institucion->getInstituciones($limit);
+        return $this->institucionModel->getInstituciones($limit);
     }
 
     public function getInstitucionById(){
@@ -15,7 +16,7 @@ class InstitucionController extends BaseController {
     }
 
     public function registrarInstitucion($titulo, $resumen, $mision, $vision){
-        return $this->institucion->crearInstitucion($titulo, $resumen, $mision, $vision);
+        return $this->institucionModel->crearInstitucion($titulo, $resumen, $mision, $vision);
     }
 
 }

@@ -8,7 +8,7 @@ class BaseAPI
     {
         
         $this->inputs = json_decode(file_get_contents('php://input'), true);
-        $this->params =  parse_str($_SERVER['QUERY_STRING'], $query);
+        parse_str($_SERVER['QUERY_STRING'], $this->params);
         $this->method =  strtoupper($_SERVER["REQUEST_METHOD"]);
     }
 
