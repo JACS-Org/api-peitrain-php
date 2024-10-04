@@ -14,8 +14,10 @@ require_once PROJECT_ROOT_PATH . "/core/database/conexion.php";
 // include the use model file 
 require_once PROJECT_ROOT_PATH . "/core/models/institucion_model.php";
 require_once PROJECT_ROOT_PATH . "/core/models/categoria_model.php";
+require_once PROJECT_ROOT_PATH . "/core/models/producto_model.php";
 
 
 // include controllers
 require_once PROJECT_ROOT_PATH . "/core/controllers/institucion_controller.php";
-require_once PROJECT_ROOT_PATH . "core/controllers/categoria_controller.php";
+require_once PROJECT_ROOT_PATH . "/core/controllers/categoria_controller.php";
+require_once PROJECT_ROOT_PATH . "/core/controllers/producto_controller.php";

@@ -1,6 +1,7 @@
 <?php
 
 class CategoriaModel extends Database{
+    
     public function __construct(){
         parent::__construct();
     }

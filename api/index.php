@@ -2,6 +2,7 @@
 require "../core/inc/bootstrap.php";
 require "./instituciones_api.php";
 require "./categorias_api.php";
+require "./productos_api.php";
 
 $response = new ResponseApi();
 
@@ -16,7 +17,11 @@ if(isset($query['action'])){
     }else if($action=="categorias"){
         $api = new CategoriaApi();
         $response->data = $api->index();
-    }else{
+    }else if($action== "productos"){
+        $api = new ProductosApi();
+        $response->data = $api->index();
+    }
+    else{
         errorApi(404,"Action no encontrado"); 
     }
 
