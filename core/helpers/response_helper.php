@@ -20,5 +20,6 @@ function errorApi(int $code,string $msg){
     $response->success = false;
     $response->code = $code;
     $response->message = $msg;
-    return $response;
+    echo(json_encode($response));
+    die();
 }

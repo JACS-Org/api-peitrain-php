@@ -29,9 +29,7 @@ class BaseAPI
 
         if(!$available){ //si faltan parametros
             $mensaje =  'Parametro(s)' . substr($missingparams, 1, strlen($missingparams)) . ' vacio(s)';
-            $response = errorApi(405,$mensaje);
-            echo json_encode($response); //error de visualización
-            die(); //detener la ejecución adicional
+            errorApi(405,$mensaje);
         }
     }
 

@@ -49,13 +49,28 @@ class CategoriaModel extends Database{
         );
 
         if($id==0){
-            $response = errorApi(405,"Error en registrar datos");
-            echo json_encode($response);
-            die();
+            errorApi(405,"Error en registrar datos");
         }
         return [
             "id"=>$id,
             "institucion_id"=>$institucion_id,
+            "nombre" => $nombre,
+            "descripcion"=>$descripcion
+        ];
+    }
+
+    public function registrarSubCategoria(int $categoria_id, string $nombre, string $descripcion){
+        $sql = "INSERT INTO subcategoria (categoria_id,nombre,descripcion)  values (?,?,?)";
+        $id = $this->register(
+            $sql, ["iss",[$categoria_id, $nombre, $descripcion]]
+        );
+
+        if($id==0){
+            errorApi(405,"Error en registrar datos");
+        }
+        return [
+            "id"=>$id,
+            "categoria_id"=>$categoria_id,
             "nombre" => $nombre,
             "descripcion"=>$descripcion
         ];

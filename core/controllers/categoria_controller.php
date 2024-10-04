@@ -15,10 +15,21 @@ class CategoriaController extends BaseController {
         return $this->categoriaModel->getCategorias($limit);
     }
 
-    public function registrarCategoria(int $institucion_id, string $nombre, string $descripcion){
-        return $this->categoriaModel->registrarCategoria(
+    public function registrarCategoria(int $institucion_id, string $nombre, string $descripcion, array $subcategorias = []) {
+        $categoria = $this->categoriaModel->registrarCategoria(
             $institucion_id, $nombre, $descripcion
             );
+        $dataSubcategorias = array();
+        foreach ($subcategorias as $item) {
+            $subcategoria = $this->categoriaModel->registrarSubCategoria(
+                $categoria["id"],
+                $item["nombre"], 
+                $item["descripcion"]
+            );
+            $dataSubcategorias[] = $subcategoria;
+        }
+        $categoria["subcategorias"] = $dataSubcategorias;
+        return $categoria;
     }
 
 }

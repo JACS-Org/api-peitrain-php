@@ -16,9 +16,7 @@ class InstitucionModel extends Database
             ["ssss",[$titulo,$resumen ,$mision, $vision]]
         );
         if($id==0){
-            $response = errorApi(405,"Error en registrar datos");
-            echo json_encode($response);
-            die();
+            errorApi(405,"Error en registrar datos");
         }
         return [
             "id"=>$id,

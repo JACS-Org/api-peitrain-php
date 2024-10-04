@@ -17,13 +17,13 @@ if(isset($query['action'])){
         $api = new CategoriaApi();
         $response->data = $api->index();
     }else{
-        $response = errorApi(404,"Action no encontrado"); 
+        errorApi(404,"Action no encontrado"); 
     }
 
 
    
 }else{
-    $response = errorApi(405,"error en action");
+    errorApi(405,"error en action");
 }
 
 
