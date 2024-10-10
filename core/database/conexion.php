@@ -58,4 +58,22 @@ class Database
         }
         return $result;
     }
+
+
+    protected function update($query = "" , $params = [])
+    {
+        try {
+            $stmt = $this->connection->prepare( $query );
+            if($stmt == false) {
+                throw New Exception("Unable to do prepared statement: " . $query);
+            }
+            if( $params ) {
+                $stmt->bind_param($params[0], ...$params[1]);
+            }
+            $stmt->execute();
+            $stmt->close();
+        } catch(Exception $e) {
+            throw New Exception( $e->getMessage() );
+        }
+    }
 }

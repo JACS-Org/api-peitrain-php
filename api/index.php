@@ -20,8 +20,7 @@ if(isset($query['action'])){
     }else if($action== "productos"){
         $api = new ProductosApi();
         $response->data = $api->index();
-    }
-    else{
+    }else{
         errorApi(404,"Action no encontrado"); 
     }
 

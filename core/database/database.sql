@@ -8,6 +8,7 @@ create table institucion(
     resumen text null,
     mision varchar(500) null,
     vision varchar(500) null,
+    photo varchar(100) null,
     estado int(1) default 1,
     fecha_creacion TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
@@ -61,6 +62,24 @@ create table producto(
 
 
 insert into institucion (id, titulo, resumen, vision, mision)  values (1, 'EL PIETRAIN', '', '', '');
+
+insert into categoria (id, institucion_id, nombre, descripcion)  values (1, 1, 'ALIMENTO BALANCEADO', 'Todos los tipo de alimentos balanceados para animales domesticos y de granja');
+insert into categoria (id, institucion_id, nombre, descripcion)  values (2, 1, 'MEDICAMENTOS', 'La mejor calidad en medicamentos para tus animales de granja y mascotas');
+insert into categoria (id, institucion_id, nombre, descripcion)  values (3, 1, 'ACCESORIOS MASCOTAS', 'Todo lo que necesitas para tu mascota lo encuentras aqui');
+
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (1, 1, 'ALIMENTO PARA CERDOS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (2, 1, 'ALIMENTO PARA GALLINAS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (3, 1, 'ALIMENTO PARA PATOS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (4, 1, 'ALIMENTO PARA PERROS', '');
+
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (5, 2, 'ANTIBIOTICOS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (6, 2, 'ANTIPARASITARIOS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (7, 2, 'VITAMINAS', '');
+
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (8, 3, 'CORREAS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (9, 3, 'JUGUETES', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (10, 3, 'CAMAS', '');
+insert into subcategoria (id, categoria_id, nombre, descripcion)  values (11, 3, 'COMEDEROS', '');
 
 
 

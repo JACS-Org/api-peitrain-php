@@ -13,7 +13,17 @@ class InstitucionApi extends BaseAPI{
         if ($this->method == 'GET') {
             return $this->getAllInstituciones();
         }else if ($this->method == 'POST') {
-            return $this->registrarInstitucion();
+            if(isset($this->params['subaction'])){
+                $subaction = $this->params['subaction'];
+                if($subaction == "updatePhoto"){
+                    return $this->actualizarFotoInstitucion();
+                }else{
+                    errorApi(405,"Subaction no encontrada");
+                }
+            }else{
+                return $this->registrarInstitucion();
+            }
+           
         }
     }
 
@@ -31,6 +41,16 @@ class InstitucionApi extends BaseAPI{
         $vision = $this->inputs['vision'];
 
         return $this->institucionController->registrarInstitucion($titulo,$resumen,$mision,$vision);
+    }
+
+    function actualizarFotoInstitucion(){
+        $this->validarFile('photo');
+        $this->validarPost('id');
+
+        $photo = $_FILES['photo'];
+        $id = $_POST['id'];
+            
+        return $this->institucionController->actualizarFotoInstitucion($id,$photo);
     }
 }
 

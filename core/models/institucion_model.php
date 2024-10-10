@@ -26,4 +26,12 @@ class InstitucionModel extends Database
             "mision" => $mision
         ];
     }
+
+    public function actualizarFotoInstitucion($id, $url_photo){
+        $this->update("UPDATE institucion set photo = ? where id = ?", ["si",[$url_photo,$id]]);
+        return [
+            "id"=>$id,
+            "foto"=>$url_photo
+        ];
+    }
 }

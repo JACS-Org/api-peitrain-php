@@ -33,5 +33,20 @@ class BaseAPI
         }
     }
 
+    function validarFile($file){
+        if(!isset($_FILES[$file])){
+            errorApi(405,"No se encontro el archivo");
+        }
+    }
+
+    function validarPost($post){
+        if(!isset($_POST[$post])){
+            errorApi(405,"No se encontro $post en la peticion post");
+        }
+    }
+
+
+    
+
 }
 

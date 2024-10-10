@@ -19,4 +19,11 @@ class InstitucionController extends BaseController {
         return $this->institucionModel->crearInstitucion($titulo, $resumen, $mision, $vision);
     }
 
+    public function actualizarFotoInstitucion($id, $photo){
+        $path = '/assets/img/instituciones/';
+        $url_photo = $this->savePhotoServer($photo, $path, $id);
+
+        return $this->institucionModel->actualizarFotoInstitucion($id, $url_photo);
+    }
+
 }
